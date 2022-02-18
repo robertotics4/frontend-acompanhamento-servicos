@@ -1,9 +1,10 @@
+import { Pesquisa } from './components/Pesquisa';
 import { GlobalStyle } from './styles/global';
 
 function App() {
   return (
     <>
-      <h1>Hello World</h1>
+      <Pesquisa />
 
       <GlobalStyle />
     </>
