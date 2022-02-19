@@ -32,6 +32,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     color: var(--text-blue);
+    outline: none;
   }
 
   h1, h2, h3, h4, h5, h6, strong {

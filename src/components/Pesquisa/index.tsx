@@ -11,7 +11,11 @@ function Pesquisa() {
 
         <h1>Acompanhamento de Serviços</h1>
 
-        <SearchInput name="numeroServico" placeholder="Digite o número do protocolo" />
+        <SearchInput
+          name="numeroServico"
+          placeholder="Digite o número do protocolo"
+          buttonAction={() => alert('Você clicou no botão pesquisar')}
+        />
       </Content>
     </Container>
   );

@@ -5,14 +5,17 @@ import { Container } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
+  buttonAction: () => void;
 }
 
-function SearchInput({ name, ...rest }: InputProps) {
+function SearchInput({ name, buttonAction, ...rest }: InputProps) {
   return (
     <Container>
       <input {...rest} />
 
-      <FiSearch color="#363f5f" size={20} />
+      <button type="button">
+        <FiSearch color="#363f5f" size={20} onClick={buttonAction} />
+      </button>
     </Container>
   );
 }

@@ -11,9 +11,15 @@ export const Container = styled.main`
 
 export const Content = styled.div`
   width: 600px;
+  padding: 16px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  h1 {
+    margin-top: 24px;
+    font-size: 24px;
+  }
 `;
