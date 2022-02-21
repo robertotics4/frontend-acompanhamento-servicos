@@ -1,15 +1,17 @@
 import { Detalhes } from './components/Detalhes';
 import { Pesquisa } from './components/Pesquisa';
+import { AppProvider } from './hooks';
 import { GlobalStyle } from './styles/global';
 
 function App() {
   return (
-    <>
-      {/* <Pesquisa /> */}
-      <Detalhes />
+    <AppProvider>
+      <Pesquisa />
+      {/* <Detalhes /> */}
 
       <GlobalStyle />
-    </>
+    </AppProvider>
+
   );
 }
 

@@ -1,6 +1,7 @@
 import { Container, Cabecalho, GrupoHorizontal } from './styles';
 
 import logo from '../../assets/logo.svg';
+import { ListaMedidas } from '../ListaMedidas';
 
 function Detalhes() {
   return (
@@ -33,8 +34,9 @@ function Detalhes() {
             <h2>8024709119</h2>
           </div>
         </GrupoHorizontal>
-
       </Cabecalho>
+
+      <ListaMedidas />
     </Container>
   );
 }
