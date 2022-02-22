@@ -1,11 +1,27 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  button {
+    width: fit-content;
+    margin: 16px 0 32px 0;
+    padding: 16px;
+    border-radius: 8px;
+    border: 0;
+    background: var(--text-blue);
+    color: #fff;
+    font-weight: bold;
+    transition: background-color 0.2s;
+
+    &:hover {
+      filter: brightness(0.8);
+    }
+  }
 `;
 
 export const Cabecalho = styled.div`

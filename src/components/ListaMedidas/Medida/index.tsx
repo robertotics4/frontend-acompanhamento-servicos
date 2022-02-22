@@ -1,18 +1,43 @@
-import { FiCheckCircle, FiClock } from 'react-icons/fi';
+import { useMemo } from 'react';
+import { FiCheck, FiClock } from 'react-icons/fi';
 
 import { Container, InfoContainer, InfoContent } from './styles';
 
-function Medida() {
+interface MedidaProps {
+  dataConclusao: Date;
+  nomeMedida: string;
+  descricaoMedida: string;
+}
+
+function Medida({ dataConclusao, nomeMedida, descricaoMedida }: MedidaProps) {
+  const dataConclusaoFormatada = useMemo(() => new Intl.DateTimeFormat('pt-BR').format(new Date(dataConclusao)), [dataConclusao]);
+
   return (
     <Container>
-      <span>Em andamento</span>
+      <span>
+        {
+          dataConclusao
+            ? (
+              <>
+                <span>Concluído em</span>
+                <strong>{dataConclusaoFormatada}</strong>
+              </>
+            )
+            : 'Em andamento'
+        }
+
+      </span>
 
       <InfoContainer>
-        <FiCheckCircle size={32} color="#363F5F" />
+        {
+          dataConclusao
+            ? <FiCheck size={32} color="#4CD62B" />
+            : <FiClock size={32} color="#5965E0" />
+        }
 
         <InfoContent>
-          <strong>Cliente retornou com pedido de vistoria</strong>
-          <span>Confirmado recebimento do parecer aprov</span>
+          <strong>{nomeMedida}</strong>
+          <span>{descricaoMedida}</span>
         </InfoContent>
       </InfoContainer>
 

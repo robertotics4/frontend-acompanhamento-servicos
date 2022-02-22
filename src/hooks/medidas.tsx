@@ -22,6 +22,7 @@ interface Medida {
 
 interface MedidasContextData {
   buscarMedidas(protocolo: string): Promise<void>;
+  limparMedidas(): void;
   medidas: Medida[];
 }
 
@@ -36,8 +37,12 @@ const MedidasProvider: React.FC = ({ children }) => {
     setMedidas(response.data);
   }, []);
 
+  const limparMedidas = useCallback(() => {
+    setMedidas([]);
+  }, []);
+
   return (
-    <MedidasContext.Provider value={{ buscarMedidas, medidas }}>
+    <MedidasContext.Provider value={{ buscarMedidas, limparMedidas, medidas }}>
       {children}
     </MedidasContext.Provider>
   );

@@ -9,11 +9,16 @@ export const Container = styled.div`
   padding: 32px;
 
   > span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-size: 16px;
+    min-width: 200px;
   }
 
   & + div {
-    border-top: 1px solid var(--text-blue);
+    border-top: 1px solid var(--gray-line);
+    border-opacit
   }
 `;
 
@@ -22,7 +27,7 @@ export const InfoContainer = styled.div`
   flex-direction: row;
   align-items: center;
 
-  margin-left: 36px;
+  margin-left: 32px;
   position: relative;
 
   svg {

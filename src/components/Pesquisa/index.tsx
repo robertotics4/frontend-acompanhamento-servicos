@@ -1,23 +1,22 @@
-import { useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import logo from '../../assets/logo.svg';
 import { useMedidas } from '../../hooks/medidas';
-import { apiConsultaProtocolo } from '../../services/apiConsultaProtocolo';
 import { SearchInput } from '../SearchInput';
 
 import { Container, Content } from './styles';
 
 function Pesquisa() {
-  const { buscarMedidas, medidas } = useMedidas();
+  const [protocolo, setProtocolo] = useState('');
 
-  console.log(medidas);
+  const { buscarMedidas } = useMedidas();
 
-  useEffect(() => {
-    async function carregarMedidas() {
-      await buscarMedidas('8024709119');
-    }
+  function handleChangeProtocolo(event: React.ChangeEvent<HTMLInputElement>) {
+    setProtocolo(event.target.value);
+  }
 
-    carregarMedidas();
-  }, [buscarMedidas]);
+  const handlePesquisar = useCallback(async () => {
+    await buscarMedidas(protocolo);
+  }, [buscarMedidas, protocolo]);
 
   return (
     <Container>
@@ -29,7 +28,9 @@ function Pesquisa() {
         <SearchInput
           name="numeroServico"
           placeholder="Digite o número do protocolo"
-          buttonAction={() => alert('Você clicou no botão pesquisar')}
+          value={protocolo}
+          onChange={(event) => handleChangeProtocolo(event)}
+          buttonAction={handlePesquisar}
         />
       </Content>
     </Container>

@@ -22,6 +22,7 @@
         "react-hooks"
     ],
     "rules": {
+      "react/jsx-no-constructed-context-values": "off",
       "react/function-component-definition": "off",
       "react/jsx-props-no-spreading": "off",
       "import/prefer-default-export": "off",
