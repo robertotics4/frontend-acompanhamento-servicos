@@ -15,7 +15,7 @@ export const Container = styled.div`
   }
 
   & + div {
-    border-top: 1px solid var(--gray-line);
+    border-top: 1px solid var(--gray);
   }
 `;
 

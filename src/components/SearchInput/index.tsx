@@ -1,21 +1,57 @@
-import { InputHTMLAttributes } from 'react';
-import { FiSearch } from 'react-icons/fi';
+import { useField } from '@unform/core';
+import {
+  InputHTMLAttributes, useCallback, useEffect, useRef, useState,
+} from 'react';
+import { FiAlertCircle } from 'react-icons/fi';
 
-import { Container } from './styles';
+import { Container, Content, Error } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
-  buttonAction: () => void;
 }
 
-function SearchInput({ name, buttonAction, ...rest }: InputProps) {
+function SearchInput({ name, ...rest }: InputProps) {
+  const [isFocused, setIsFocused] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const {
+    fieldName, defaultValue, error, registerField,
+  } = useField(name);
+
+  const handleInputFocus = useCallback(() => {
+    setIsFocused(true);
+  }, []);
+
+  const handleInputBlur = useCallback(() => {
+    setIsFocused(false);
+  }, []);
+
+  useEffect(() => {
+    registerField({
+      name: fieldName,
+      ref: inputRef.current,
+      path: 'value',
+    });
+  }, [fieldName, registerField]);
+
   return (
     <Container>
-      <input {...rest} />
+      <Content isFocused={isFocused} isErrored={!!error}>
 
-      <button type="button">
-        <FiSearch color="#363f5f" size={20} onClick={buttonAction} />
-      </button>
+        <input
+          id={name}
+          defaultValue={defaultValue}
+          ref={inputRef}
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
+          {...rest}
+        />
+
+        {error && (
+          <Error title={error}>
+            <FiAlertCircle color="#E83F5B" size={20} />
+          </Error>
+        )}
+      </Content>
     </Container>
   );
 }
