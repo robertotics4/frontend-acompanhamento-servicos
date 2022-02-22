@@ -10,7 +10,7 @@ function Detalhes() {
 
   const informacoesSolicitacao = useMemo(() => {
     const dataCriacao = new Intl.DateTimeFormat('pt-BR').format(new Date(medidas[0].dataCriacao));
-    const dataPrevisao = new Intl.DateTimeFormat('pt-BR').format(new Date(medidas[0].dataConclusaoDesejada));
+    const dataPrevisao = medidas[0].dataConclusaoDesejada ? new Intl.DateTimeFormat('pt-BR').format(new Date(medidas[0].dataConclusaoDesejada)) : '-';
     const { contaContrato } = medidas[0];
     const { numeroServico: protocolo } = medidas[0];
 

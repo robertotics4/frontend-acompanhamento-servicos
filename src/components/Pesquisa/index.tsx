@@ -85,9 +85,7 @@ function Pesquisa() {
               </FormPesquisar>
             )
         }
-
       </Content>
-
     </Container>
   );
 }

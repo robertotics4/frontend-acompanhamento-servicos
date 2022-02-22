@@ -8,14 +8,17 @@ import { Container, Content, Error } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
+  containerStyle?: object;
 }
 
-function SearchInput({ name, ...rest }: InputProps) {
+function SearchInput({ name, containerStyle = {}, ...rest }: InputProps) {
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const {
     fieldName, defaultValue, error, registerField,
   } = useField(name);
+
+  console.log(error);
 
   const handleInputFocus = useCallback(() => {
     setIsFocused(true);
@@ -35,7 +38,7 @@ function SearchInput({ name, ...rest }: InputProps) {
 
   return (
     <Container>
-      <Content isFocused={isFocused} isErrored={!!error}>
+      <Content isFocused={isFocused} isErrored={!!error} style={containerStyle}>
 
         <input
           id={name}

@@ -9,6 +9,7 @@ interface ContentProps {
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 16px;
 
   & + div {
     margin-top: 16px;
@@ -20,7 +21,6 @@ export const Content = styled.div<ContentProps>`
   border-radius: 10px;
   padding: 16px;
   width: 100%;
-  margin-top: 16px;
 
   border: 2px solid var(--gray);
 
