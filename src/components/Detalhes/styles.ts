@@ -13,7 +13,7 @@ export const Container = styled.div`
     padding: 16px;
     border-radius: 8px;
     border: 0;
-    background: var(--text-blue);
+    background: var(--text);
     color: #fff;
     font-weight: bold;
     transition: background-color 0.2s;
@@ -30,13 +30,14 @@ export const Cabecalho = styled.div`
   align-items: center;
 
   padding: 16px;
+  margin-top: 16px;
 
   img {
     width: 220px;
   }
 
   h1 {
-    margin-top: 16px;
+    margin-top: 32px;
     font-size: 24px;
   }
 `;
@@ -47,7 +48,7 @@ export const GrupoHorizontal = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-  margin-top: 16px;
+  margin-top: 32px;
 
   div {
     display: flex;

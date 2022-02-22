@@ -1,7 +1,9 @@
 import { useMemo } from 'react';
 import { FiCheck, FiClock } from 'react-icons/fi';
 
-import { Container, InfoContainer, InfoContent } from './styles';
+import {
+  Container, InfoConclusao, InfoContainer, InfoContent,
+} from './styles';
 
 interface MedidaProps {
   dataConclusao: Date;
@@ -14,25 +16,22 @@ function Medida({ dataConclusao, nomeMedida, descricaoMedida }: MedidaProps) {
 
   return (
     <Container>
-      <span>
-        {
+      {
           dataConclusao
             ? (
-              <>
+              <InfoConclusao>
                 <span>Concluído em</span>
                 <strong>{dataConclusaoFormatada}</strong>
-              </>
+              </InfoConclusao>
             )
-            : 'Em andamento'
+            : <span>Em andamento</span>
         }
-
-      </span>
 
       <InfoContainer>
         {
           dataConclusao
             ? <FiCheck size={32} color="#4CD62B" />
-            : <FiClock size={32} color="#5965E0" />
+            : <FiClock size={32} color="#2E384D" />
         }
 
         <InfoContent>

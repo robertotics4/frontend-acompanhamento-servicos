@@ -9,17 +9,21 @@ export const Container = styled.div`
   padding: 32px;
 
   > span {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: right;
     font-size: 16px;
-    min-width: 200px;
+    min-width: 150px;
   }
 
   & + div {
     border-top: 1px solid var(--gray-line);
-    border-opacit
   }
+`;
+
+export const InfoConclusao = styled.div`
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 `;
 
 export const InfoContainer = styled.div`
@@ -27,7 +31,7 @@ export const InfoContainer = styled.div`
   flex-direction: row;
   align-items: center;
 
-  margin-left: 32px;
+  margin-left: 48px;
   position: relative;
 
   svg {
@@ -39,7 +43,7 @@ export const InfoContainer = styled.div`
 export const InfoContent = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 48px;
+  margin-left: 56px;
 
   strong {
     font-size: 16px;

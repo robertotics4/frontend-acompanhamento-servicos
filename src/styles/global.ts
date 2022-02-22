@@ -4,9 +4,7 @@ export const GlobalStyle = createGlobalStyle`
   :root {
     --background: #f0f2f5;
     --gray-line: #DCDDE0;
-    --text-blue: #363f5f;
-    --title: #2E384D;
-    --text: #666666;
+    --text: #2E384D;
     --red: #E83F5B;
     --green: #4CD62B;
     --blue: #5965E0;
@@ -35,7 +33,7 @@ export const GlobalStyle = createGlobalStyle`
   body, input, textarea, button {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    color: var(--text-blue);
+    color: var(--text);
     outline: none;
   }
 

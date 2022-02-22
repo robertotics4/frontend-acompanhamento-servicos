@@ -34,6 +34,10 @@ const MedidasProvider: React.FC = ({ children }) => {
   const buscarMedidas = useCallback(async (protocolo: string) => {
     const response = await apiConsultaProtocolo.get(`/medidas/${protocolo}`);
 
+    if (!response.data.length) {
+      throw new Error('Não foram encontradas informações sobre o protocolo informado, tente novamente.');
+    }
+
     setMedidas(response.data);
   }, []);
 
