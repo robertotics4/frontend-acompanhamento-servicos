@@ -1,5 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Form } from '@unform/web';
+
+interface ButtonProps {
+  isLoading?: boolean;
+}
 
 export const Container = styled.main`
   height: 100vh;
@@ -29,7 +33,7 @@ export const FormPesquisar = styled(Form)`
   }
 `;
 
-export const PesquisarButton = styled.button`
+export const PesquisarButton = styled.button<ButtonProps>`
   height: 56px;
   width: 100%;
   border-radius: 10px;
@@ -45,6 +49,11 @@ export const PesquisarButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  ${(props) => props.isLoading
+    && css`
+      margin: none;
+    `}
 
   svg {
     margin-left: 16px;

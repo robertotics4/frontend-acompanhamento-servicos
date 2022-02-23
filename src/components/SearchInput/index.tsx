@@ -18,8 +18,6 @@ function SearchInput({ name, containerStyle = {}, ...rest }: InputProps) {
     fieldName, defaultValue, error, registerField,
   } = useField(name);
 
-  console.log(error);
-
   const handleInputFocus = useCallback(() => {
     setIsFocused(true);
   }, []);

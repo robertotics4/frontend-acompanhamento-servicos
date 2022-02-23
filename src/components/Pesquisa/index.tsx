@@ -1,9 +1,9 @@
 import { FormHandles } from '@unform/core';
-import { useCallback, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import * as Yup from 'yup';
-import Spinner from 'react-spinkit';
 import { useLoading } from 'react-use-loading';
 import Swal from 'sweetalert2';
+import { TailSpin } from 'react-loader-spinner';
 
 import { FiSearch } from 'react-icons/fi';
 import logo from '../../assets/logo.svg';
@@ -24,9 +24,15 @@ function Pesquisa() {
   const formRef = useRef<FormHandles>(null);
   const [{ isLoading }, { start: startLoading, stop: stopLoading }] = useLoading();
 
+  function sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
   const handleSubmit = useCallback(async (data: PesquisarFormData) => {
     try {
       startLoading('Buscando informações');
+
+      await sleep(3000);
 
       formRef.current?.setErrors({});
 
@@ -56,35 +62,41 @@ function Pesquisa() {
     }
   }, [buscarMedidas, startLoading, stopLoading]);
 
+  useEffect(() => () => {
+    stopLoading();
+  }, [stopLoading]);
+
   return (
     <Container>
       <Content>
         <img src={logo} alt="Equatorial Energia" />
 
-        {
-          isLoading
-            ? <Spinner name="ball-beat" color="#2E384D" style={{ marginTop: '32px' }} />
-            : (
-              <FormPesquisar
-                onSubmit={handleSubmit}
-                autoComplete="off"
-                ref={formRef}
-              >
-                <h1>Acompanhamento de Serviços</h1>
+        <FormPesquisar
+          onSubmit={handleSubmit}
+          autoComplete="off"
+          ref={formRef}
+        >
+          <h1>Acompanhamento de Serviços</h1>
 
-                <SearchInput
-                  name="protocolo"
-                  placeholder="Digite o número do protocolo"
-                  autoComplete="off"
-                />
+          <SearchInput
+            name="protocolo"
+            placeholder="Digite o número do protocolo"
+            autoComplete="off"
+          />
 
-                <PesquisarButton type="submit">
-                  Pesquisar protocolo
-                  <FiSearch size={20} color="#fff" />
-                </PesquisarButton>
-              </FormPesquisar>
-            )
-        }
+          <PesquisarButton type="submit" isLoading>
+            {
+              isLoading
+                ? <TailSpin ariaLabel="loading-indicator" width={30} height={30} color="#fFF" />
+                : (
+                  <>
+                    Pesquisar protocolo
+                    <FiSearch size={20} color="#fff" />
+                  </>
+                )
+            }
+          </PesquisarButton>
+        </FormPesquisar>
       </Content>
     </Container>
   );
