@@ -26,10 +26,11 @@ export const Content = styled.div`
 `;
 
 export const FormPesquisar = styled(Form)`
-  margin-top: 24px;
+  margin-top: 32px;
 
   h1 {
       font-size: 24px;
+      margin-bottom: 32px;
   }
 `;
 
@@ -56,7 +57,7 @@ export const PesquisarButton = styled.button<ButtonProps>`
     `}
 
   svg {
-    margin-left: 16px;
+    margin-right: 16px;
   }
 
   &:hover {

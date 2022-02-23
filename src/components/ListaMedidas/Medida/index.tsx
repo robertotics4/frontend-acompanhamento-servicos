@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { FiCheck, FiClock } from 'react-icons/fi';
+import { BsClockHistory } from 'react-icons/bs';
 
 import {
   Container, InfoConclusao, InfoContainer, InfoContent,
@@ -31,7 +32,7 @@ function Medida({ dataConclusao, nomeMedida, descricaoMedida }: MedidaProps) {
         {
           dataConclusao
             ? <FiCheck size={32} color="#4CD62B" />
-            : <FiClock size={32} color="#2E384D" />
+            : <BsClockHistory size={32} color="#2E384D" />
         }
 
         <InfoContent>

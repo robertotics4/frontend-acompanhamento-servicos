@@ -24,15 +24,9 @@ function Pesquisa() {
   const formRef = useRef<FormHandles>(null);
   const [{ isLoading }, { start: startLoading, stop: stopLoading }] = useLoading();
 
-  function sleep(ms: number) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
-
   const handleSubmit = useCallback(async (data: PesquisarFormData) => {
     try {
       startLoading('Buscando informações');
-
-      await sleep(3000);
 
       formRef.current?.setErrors({});
 
@@ -90,8 +84,8 @@ function Pesquisa() {
                 ? <TailSpin ariaLabel="loading-indicator" width={30} height={30} color="#fFF" />
                 : (
                   <>
-                    Pesquisar protocolo
                     <FiSearch size={20} color="#fff" />
+                    Pesquisar protocolo
                   </>
                 )
             }

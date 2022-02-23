@@ -30,8 +30,8 @@ export const Content = styled.div<ContentProps>`
 
   ${(props) => props.isFocused
     && css`
-      color: var(--blue);
-      border-color: var(--blue);
+      color: var(--text);
+      border-color: var(--text);
     `}
 
   ${(props) => props.isErrored
