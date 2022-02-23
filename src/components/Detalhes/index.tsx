@@ -9,12 +9,14 @@ function Detalhes() {
   const { medidas, limparMedidas } = useMedidas();
 
   const informacoesSolicitacao = useMemo(() => {
+    const { descricaoTipoNota } = medidas[0];
     const dataCriacao = new Intl.DateTimeFormat('pt-BR').format(new Date(medidas[0].dataCriacao));
     const dataPrevisao = medidas[0].dataConclusaoDesejada ? new Intl.DateTimeFormat('pt-BR').format(new Date(medidas[0].dataConclusaoDesejada)) : '-';
     const { contaContrato } = medidas[0];
     const { numeroServico: protocolo } = medidas[0];
 
     return {
+      descricaoTipoNota,
       dataCriacao,
       dataPrevisao,
       contaContrato,
@@ -27,7 +29,7 @@ function Detalhes() {
       <Cabecalho>
         <img src={logo} alt="Equatorial Energia" />
 
-        <h1>Acesso à migrogeração distribuida</h1>
+        <h1>{informacoesSolicitacao.descricaoTipoNota}</h1>
 
         <GrupoHorizontal>
           <div>

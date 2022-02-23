@@ -31,7 +31,15 @@ function Pesquisa() {
       formRef.current?.setErrors({});
 
       const schema = Yup.object().shape({
-        protocolo: Yup.string().required('O protocolo é obrigatório'),
+        protocolo: Yup.number()
+          .test('É válido?', 'O número de protocolo é inválido', (value) => {
+            if (value && value > 0) {
+              return true;
+            }
+
+            return false;
+          })
+          .required('O protocolo é obrigatório'),
       });
 
       await schema.validate(data, { abortEarly: false });
@@ -75,6 +83,7 @@ function Pesquisa() {
           <SearchInput
             name="protocolo"
             placeholder="Digite o número do protocolo"
+            type="number"
             autoComplete="off"
           />
 

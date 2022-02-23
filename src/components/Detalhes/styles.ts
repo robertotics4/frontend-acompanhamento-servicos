@@ -51,6 +51,10 @@ export const GrupoHorizontal = styled.div`
   margin-top: 32px;
 
   div {
+    & + div {
+      margin-left: 32px;
+    }
+
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -50,6 +50,18 @@ export const Content = styled.div<ContentProps>`
       color: var(--gray);
     }
   }
+
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
 `;
 
 export const Error = styled(Tooltip)`
