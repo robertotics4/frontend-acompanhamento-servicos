@@ -6,6 +6,10 @@ export const Container = styled.div`
   width: 100%;
   align-items: center;
 
+  & + div {
+    opacity: 70%;
+  }
+
   padding: 32px;
 
   > span {

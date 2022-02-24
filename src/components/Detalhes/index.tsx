@@ -14,6 +14,7 @@ function Detalhes() {
     const dataPrevisao = medidas[0].dataConclusaoDesejada ? new Intl.DateTimeFormat('pt-BR').format(new Date(medidas[0].dataConclusaoDesejada)) : '-';
     const { contaContrato } = medidas[0];
     const { numeroServico: protocolo } = medidas[0];
+    const { descricaoStatus } = medidas[0];
 
     return {
       descricaoTipoNota,
@@ -21,6 +22,7 @@ function Detalhes() {
       dataPrevisao,
       contaContrato,
       protocolo,
+      descricaoStatus,
     };
   }, [medidas]);
 
@@ -46,7 +48,13 @@ function Detalhes() {
         <GrupoHorizontal>
           <div>
             <span>Previsão</span>
-            <h2>{informacoesSolicitacao.dataPrevisao}</h2>
+            <h2>
+              {
+                informacoesSolicitacao.descricaoStatus === 'Finalizada'
+                  ? 'Finalizada'
+                  : informacoesSolicitacao.dataPrevisao
+              }
+            </h2>
           </div>
 
           <div>
