@@ -20,8 +20,13 @@ interface Medida {
   dataConclusao: Date;
 }
 
+interface BuscarMedidasProps {
+  empresaOperadora: number;
+  protocolo: string;
+}
+
 interface MedidasContextData {
-  buscarMedidas(protocolo: string): Promise<void>;
+  buscarMedidas({ empresaOperadora: number, protocolo: string }: BuscarMedidasProps): Promise<void>;
   limparMedidas(): void;
   medidas: Medida[];
 }
@@ -31,8 +36,13 @@ const MedidasContext = createContext<MedidasContextData>({} as MedidasContextDat
 const MedidasProvider: React.FC = ({ children }) => {
   const [medidas, setMedidas] = useState<Medida[]>([]);
 
-  const buscarMedidas = useCallback(async (protocolo: string) => {
-    const response = await apiConsultaProtocolo.get(`/medidas/${protocolo}`);
+  const buscarMedidas = useCallback(async ({ empresaOperadora, protocolo }: BuscarMedidasProps) => {
+    const response = await apiConsultaProtocolo.get('/medidas', {
+      params: {
+        empresaOperadora,
+        numeroServico: protocolo,
+      },
+    });
 
     if (!response.data.length) {
       throw new Error('Não foram encontradas informações sobre o protocolo informado, tente novamente.');

@@ -8,14 +8,16 @@ import { TailSpin } from 'react-loader-spinner';
 import { FiSearch } from 'react-icons/fi';
 import logo from '../../assets/logo.svg';
 import { useMedidas } from '../../hooks/medidas';
-import { SearchInput } from '../SearchInput';
 import { getValidationErrors } from '../../utils/getValidationErrors';
 
 import {
   Container, Content, FormPesquisar, PesquisarButton,
 } from './styles';
+import { CustomInput } from '../CustomInput';
+import { CustomSelect } from '../CustomSelect';
 
 interface PesquisarFormData {
+  empresaOperadora: number;
   protocolo: string;
 }
 
@@ -31,6 +33,9 @@ function Pesquisa() {
       formRef.current?.setErrors({});
 
       const schema = Yup.object().shape({
+        empresaOperadora: Yup.number()
+          .typeError('A empresa é obrigatória')
+          .required('A empresa é obrigatória'),
         protocolo: Yup.number()
           .test('É válido?', 'O número de protocolo é inválido', (value) => {
             if (value && value > 0) {
@@ -44,7 +49,10 @@ function Pesquisa() {
 
       await schema.validate(data, { abortEarly: false });
 
-      await buscarMedidas(data.protocolo);
+      await buscarMedidas({
+        empresaOperadora: data.empresaOperadora,
+        protocolo: data.protocolo,
+      });
 
       formRef.current?.reset();
     } catch (err) {
@@ -80,7 +88,16 @@ function Pesquisa() {
         >
           <h1>Acompanhamento de Serviços</h1>
 
-          <SearchInput
+          <CustomSelect
+            name="empresaOperadora"
+            autoComplete="off"
+            options={[
+              { description: 'Maranhão', value: 98 },
+              { description: 'Pará', value: 95 },
+            ]}
+          />
+
+          <CustomInput
             name="protocolo"
             placeholder="Digite o número do protocolo"
             type="number"

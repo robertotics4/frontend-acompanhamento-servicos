@@ -1,20 +1,28 @@
 import { useField } from '@unform/core';
 import {
-  InputHTMLAttributes,
+  SelectHTMLAttributes,
   useCallback, useEffect, useRef, useState,
 } from 'react';
 import { FiAlertCircle } from 'react-icons/fi';
 
 import { Container, Content, Error } from './styles';
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface Option {
+  value: string | number;
+  description: string;
+}
+
+interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   name: string;
+  options: Option[];
   containerStyle?: object;
 }
 
-function SearchInput({ name, containerStyle = {}, ...rest }: InputProps) {
+function CustomSelect({
+  name, options, containerStyle = {}, ...rest
+}: SelectProps) {
   const [isFocused, setIsFocused] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const selectRef = useRef<HTMLSelectElement>(null);
   const {
     fieldName, defaultValue, error, registerField,
   } = useField(name);
@@ -30,23 +38,36 @@ function SearchInput({ name, containerStyle = {}, ...rest }: InputProps) {
   useEffect(() => {
     registerField({
       name: fieldName,
-      ref: inputRef.current,
+      ref: selectRef.current,
       path: 'value',
     });
   }, [fieldName, registerField]);
 
   return (
     <Container>
-      <Content isFocused={isFocused} isErrored={!!error} style={containerStyle}>
-
-        <input
+      <Content
+        isFocused={isFocused}
+        isErrored={!!error}
+        style={containerStyle}
+      >
+        <select
           id={name}
           defaultValue={defaultValue}
-          ref={inputRef}
+          ref={selectRef}
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
           {...rest}
-        />
+        >
+          <option value="" selected disabled>Selecione</option>
+          {options.map((option) => (
+            <option
+              key={option.value}
+              value={option.value}
+            >
+              {option.description}
+            </option>
+          ))}
+        </select>
 
         {error && (
           <Error title={error}>
@@ -58,4 +79,4 @@ function SearchInput({ name, containerStyle = {}, ...rest }: InputProps) {
   );
 }
 
-export { SearchInput };
+export { CustomSelect };
