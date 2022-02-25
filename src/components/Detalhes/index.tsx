@@ -35,17 +35,20 @@ function Detalhes() {
 
         <GrupoHorizontal>
           <div>
-            <span>Data da solicitação</span>
-            <h2>{informacoesSolicitacao.dataCriacao}</h2>
-          </div>
-
-          <div>
             <span>Conta contrato</span>
             <h2>{informacoesSolicitacao.contaContrato}</h2>
+          </div>
+          <div>
+            <span>Nº protocolo</span>
+            <h2>{informacoesSolicitacao.protocolo}</h2>
           </div>
         </GrupoHorizontal>
 
         <GrupoHorizontal>
+          <div>
+            <span>Data da solicitação</span>
+            <h2>{informacoesSolicitacao.dataCriacao}</h2>
+          </div>
           <div>
             <span>Previsão</span>
             <h2>
@@ -55,11 +58,6 @@ function Detalhes() {
                   : informacoesSolicitacao.dataPrevisao
               }
             </h2>
-          </div>
-
-          <div>
-            <span>Nº protocolo</span>
-            <h2>{informacoesSolicitacao.protocolo}</h2>
           </div>
         </GrupoHorizontal>
       </Cabecalho>

@@ -46,18 +46,25 @@ export const GrupoHorizontal = styled.div`
   display: flex;
   width: 100%;
   flex-direction: row;
-  justify-content: space-between;
 
-  margin-top: 32px;
+  margin-top: 16px;
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0;
+  }
 
   div {
-    & + div {
-      margin-left: 32px;
-    }
+    min-width: 250px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media (max-width: 768px) {
+      margin-top: 16px;
+    }
 
     span {
       font-size: 16px;

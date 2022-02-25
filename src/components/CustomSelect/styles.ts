@@ -46,6 +46,8 @@ export const Content = styled.div<ContentProps>`
     border: 0;
     color: var(--text);
     outline: none;
+
+    cursor: pointer;
   }
 
   /* Chrome, Safari, Edge, Opera */
