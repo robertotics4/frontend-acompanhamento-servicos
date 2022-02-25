@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { FiCheck, FiClock } from 'react-icons/fi';
+import { FiCheck } from 'react-icons/fi';
 import { BsClockHistory } from 'react-icons/bs';
 
 import {
@@ -40,7 +40,6 @@ function Medida({ dataConclusao, nomeMedida, descricaoMedida }: MedidaProps) {
           <span>{descricaoMedida}</span>
         </InfoContent>
       </InfoContainer>
-
     </Container>
   );
 }

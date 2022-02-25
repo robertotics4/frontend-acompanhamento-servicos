@@ -18,6 +18,10 @@ export const Container = styled.div`
     font-weight: bold;
     transition: background-color 0.2s;
 
+    @media (max-width: 768px) {
+      width: 50%;
+    }
+
     &:hover {
       filter: brightness(0.8);
     }
