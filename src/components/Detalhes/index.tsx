@@ -50,7 +50,7 @@ function Detalhes() {
             <h2>{informacoesSolicitacao.dataCriacao}</h2>
           </div>
           <div>
-            <span>Previsão</span>
+            <span>Status / Previsão</span>
             <h2>
               {
                 informacoesSolicitacao.descricaoStatus === 'Finalizada'

@@ -5,39 +5,44 @@ import { BsClockHistory } from 'react-icons/bs';
 import {
   Container, InfoConclusao, InfoContainer, InfoContent,
 } from './styles';
+import { Medida as IMedida } from '../../../hooks/medidas';
 
 interface MedidaProps {
-  dataConclusao: Date;
-  nomeMedida: string;
-  descricaoMedida: string;
+  medida: IMedida;
 }
 
-function Medida({ dataConclusao, nomeMedida, descricaoMedida }: MedidaProps) {
-  const dataConclusaoFormatada = useMemo(() => new Intl.DateTimeFormat('pt-BR').format(new Date(dataConclusao)), [dataConclusao]);
+function Medida({ medida }: MedidaProps) {
+  const dataConclusaoFormatada = useMemo(() => new Intl.DateTimeFormat('pt-BR').format(new Date(medida.dataConclusao)), [medida.dataConclusao]);
+  const dataPrevisaoFormatada = useMemo(() => new Intl.DateTimeFormat('pt-BR').format(new Date(medida.dataFimPlanejadoMedida)), [medida.dataFimPlanejadoMedida]);
 
   return (
     <Container>
       {
-          dataConclusao
+          medida.dataConclusao
             ? (
               <InfoConclusao>
                 <span>Concluído em</span>
                 <strong>{dataConclusaoFormatada}</strong>
               </InfoConclusao>
             )
-            : <span>Em andamento</span>
+            : (
+              <InfoConclusao>
+                <span>Previsão</span>
+                <strong>{dataPrevisaoFormatada}</strong>
+              </InfoConclusao>
+            )
         }
 
       <InfoContainer>
         {
-          dataConclusao
+          medida.dataConclusao
             ? <FiCheck size={32} color="#4CD62B" />
             : <BsClockHistory size={32} color="#2E384D" />
         }
 
         <InfoContent>
-          <strong>{nomeMedida}</strong>
-          <span>{descricaoMedida}</span>
+          <strong>{medida.nomeMedida}</strong>
+          <span>{medida.descricaoMedida}</span>
         </InfoContent>
       </InfoContainer>
     </Container>

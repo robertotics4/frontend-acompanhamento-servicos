@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import { apiConsultaProtocolo } from '../services/apiConsultaProtocolo';
 
-interface Medida {
+export interface Medida {
   numeroNota: string;
   numeroServico: string;
   descricaoTipoNota: string;

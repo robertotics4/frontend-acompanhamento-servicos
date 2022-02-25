@@ -10,9 +10,7 @@ function ListaMedidas() {
       {medidas.map((medida) => (
         <Medida
           key={medida.numSequenciaMedida}
-          nomeMedida={medida.nomeMedida}
-          descricaoMedida={medida.descricaoMedida}
-          dataConclusao={medida.dataConclusao}
+          medida={medida}
         />
       ))}
     </Container>
