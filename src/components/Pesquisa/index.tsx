@@ -18,6 +18,7 @@ import { CustomSelect } from '../CustomSelect';
 
 interface PesquisarFormData {
   empresaOperadora: number;
+  contaContrato: string;
   protocolo: string;
 }
 
@@ -36,6 +37,9 @@ function Pesquisa() {
         empresaOperadora: Yup.number()
           .typeError('A empresa é obrigatória')
           .required('A empresa é obrigatória'),
+        contaContrato: Yup.string().required('A conta contrato é obrigatória')
+          .matches(/^[0-9.]+$/, 'Digite de 1 a 12 números')
+          .max(12, 'Limite de tamanho é 12'),
         protocolo: Yup.number()
           .test('É válido?', 'O número de protocolo é inválido', (value) => {
             if (value && value > 0) {
@@ -51,6 +55,7 @@ function Pesquisa() {
 
       await buscarMedidas({
         empresaOperadora: data.empresaOperadora,
+        contaContrato: data.contaContrato,
         protocolo: data.protocolo,
       });
 
@@ -95,6 +100,13 @@ function Pesquisa() {
               { description: 'Maranhão', value: 98 },
               { description: 'Pará', value: 95 },
             ]}
+          />
+
+          <CustomInput
+            name="contaContrato"
+            placeholder="Digite o número da conta contrato"
+            type="text"
+            autoComplete="off"
           />
 
           <CustomInput

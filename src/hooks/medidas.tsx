@@ -22,11 +22,16 @@ export interface Medida {
 
 interface BuscarMedidasProps {
   empresaOperadora: number;
+  contaContrato: string;
   protocolo: string;
 }
 
 interface MedidasContextData {
-  buscarMedidas({ empresaOperadora: number, protocolo: string }: BuscarMedidasProps): Promise<void>;
+  buscarMedidas({
+    empresaOperadora,
+    contaContrato,
+    protocolo,
+  }: BuscarMedidasProps): Promise<void>;
   limparMedidas(): void;
   medidas: Medida[];
 }
@@ -36,10 +41,15 @@ const MedidasContext = createContext<MedidasContextData>({} as MedidasContextDat
 const MedidasProvider: React.FC = ({ children }) => {
   const [medidas, setMedidas] = useState<Medida[]>([]);
 
-  const buscarMedidas = useCallback(async ({ empresaOperadora, protocolo }: BuscarMedidasProps) => {
+  const buscarMedidas = useCallback(async ({
+    empresaOperadora,
+    contaContrato,
+    protocolo,
+  }: BuscarMedidasProps) => {
     const response = await apiConsultaProtocolo.get('/medidas', {
       params: {
         empresaOperadora,
+        contaContrato,
         numeroServico: protocolo,
       },
     });
