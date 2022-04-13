@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width="40%" src=".github/capa.gif" alt="Equatorial Energia"></a>
+ <img src=".github/capa.gif" alt="Equatorial Energia"></a>
 </p>
 
 <h3 align="center">frontend-acompanhamento-servicos</h3>
@@ -88,7 +88,7 @@ Para efetuar o deploy da aplicação acesse a [FAQ#04 - Deploy de aplicações R
 
 ## ✍️ Autores <a name = "autores"></a>
 
-- [@robertotics4](https://github.com/robertotics4) - Desenvolvimento
+- [@robertotics4](https://github.com/robertotics4) - Desenvolvimento | UI/UX
 - [@pedrohlisboa-261](https://github.com/pedrohlisboa-261) - Ideação
 
 ## 🎉 Agradecimentos <a name = "agradecimentos"></a>
